@@ -1,4 +1,9 @@
 var express = require('express');
+var mongoose = require('mongoose');
+var Beer = require('./models/beer');
+
+// connect to the beerlocker MongoDB
+mongoose.connect('mongodb://localhost:27017/beerlocker');
 
 var app = express();
 
