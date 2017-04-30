@@ -1,11 +1,15 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 var Beer = require('./models/beer');
 
 // connect to the beerlocker MongoDB
 mongoose.connect('mongodb://localhost:27017/beerlocker');
 
 var app = express();
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 var port = process.env.PORT || 3000;
 
@@ -17,5 +21,5 @@ router.get('/', function(req, res) {
 
 app.use('/api', router);
 
-app.listen(port)
+app.listen(port);
 console.log('Insert beer on port ' + port);
