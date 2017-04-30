@@ -16,7 +16,7 @@ var port = process.env.PORT || 3000;
 var router = express.Router();
 
 router.get('/', function(req, res) {
-    res.json({message: 'You are running dangerously low on beer!'})
+    res.json({message: 'You are running dangerously low on beer!'});
 });
 
 var beersRoute = router.route('/beers/');
@@ -62,6 +62,13 @@ beerRoute.put(function(req, res) {
     });
 });
 
+beerRoute.delete(function(req, res) {
+    Beer.findByIdAndRemove(req.params.beer_id, function(err) {
+        if (err)
+            res.send(err);
+        res.json({message: 'Beer removed from the locker!'});
+    });
+});
 
 app.use('/api', router);
 
