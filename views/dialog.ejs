@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beer Locker</title>
+</head>
+<body>
+    <p>Hi <%= user.username %>!</p>
+    <p><b><%= client.name %></b> is requesting <b>full access</b> to your account.</p>
+    <p>Do you approve?</p>
+
+    <form>
+        <input type="hidden" name="transaction_id" value="<%= transactionID %>">
+        <div>
+            <input type="submit" id="allow" value="Allow">
+            <input type="submit" id="deny" value="Deny" name="Cancel">
+        </div>
+    </form>
+</body>
+</html>
