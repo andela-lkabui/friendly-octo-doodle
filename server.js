@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var ejs = require('ejs');
+var session = require('express-session');
 var beerController = require('./controllers/beer');
 var userController = require('./controllers/user');
 var authController = require('./controllers/auth');
@@ -20,6 +21,12 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(passport.initialize());
+
+app.use(session({
+    secret: 'Super Secret Session Key',
+    saveUninitialized: true,
+    resave: true
+}));
 
 var port = process.env.PORT || 3000;
 
