@@ -71,3 +71,7 @@ exports.authorization = [
         res.render('dialog', {transactionID: req.oauth2.transactionID, user: req.user, client: req.oauth2.client });
     }
 ]
+
+exports.decision = [
+    server.decision()
+]
