@@ -31,7 +31,7 @@ exports.getBeer = function(req, res) {
 };
 
 exports.putBeer = function(req, res) {
-    Beer.update({ userId: req.user._id, _id: req.params.beer_id }, function(err, beer) {
+    Beer.findById(req.params.beer_id, function(err, beer) {
         if (err)
             res.send(err);
         beer.quantity = req.body.quantity;
@@ -44,7 +44,7 @@ exports.putBeer = function(req, res) {
 };
 
 exports.deleteBeer = function(req, res) {
-    Beer.remove({ userId: req.user._id, _id: req.params.beer_id }, function(err) {
+    Beer.findByIdAndRemove(req.params.beer_id, function(err) {
         if (err)
             res.send(err);
         res.json({message: 'Beer removed from the locker!'});
