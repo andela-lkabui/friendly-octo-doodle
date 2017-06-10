@@ -75,3 +75,8 @@ exports.authorization = [
 exports.decision = [
     server.decision()
 ]
+
+exports.token = [
+    server.token(),
+    server.errorHandler()
+]
